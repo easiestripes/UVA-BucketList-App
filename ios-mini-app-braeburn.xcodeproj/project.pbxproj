@@ -14,6 +14,9 @@
 		9DAA497B1D99CF2E001B6173 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DAA49791D99CF2E001B6173 /* LaunchScreen.storyboard */; };
 		9DAA49861D99CF2E001B6173 /* ios_mini_app_braeburnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA49851D99CF2E001B6173 /* ios_mini_app_braeburnTests.swift */; };
 		9DAA49911D99CF2E001B6173 /* ios_mini_app_braeburnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA49901D99CF2E001B6173 /* ios_mini_app_braeburnUITests.swift */; };
+		9DAA499F1D99D041001B6173 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA499E1D99D041001B6173 /* Item.swift */; };
+		9DAA49A11D99D06C001B6173 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA49A01D99D06C001B6173 /* ItemTableViewCell.swift */; };
+		9DAA49A31D99D098001B6173 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA49A21D99D098001B6173 /* ItemTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		9DAA498C1D99CF2E001B6173 /* ios-mini-app-braeburnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-mini-app-braeburnUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DAA49901D99CF2E001B6173 /* ios_mini_app_braeburnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_mini_app_braeburnUITests.swift; sourceTree = "<group>"; };
 		9DAA49921D99CF2E001B6173 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DAA499E1D99D041001B6173 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		9DAA49A01D99D06C001B6173 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		9DAA49A21D99D098001B6173 /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 				9DAA49771D99CF2E001B6173 /* Assets.xcassets */,
 				9DAA49791D99CF2E001B6173 /* LaunchScreen.storyboard */,
 				9DAA497C1D99CF2E001B6173 /* Info.plist */,
+				9DAA499E1D99D041001B6173 /* Item.swift */,
+				9DAA49A01D99D06C001B6173 /* ItemTableViewCell.swift */,
+				9DAA49A21D99D098001B6173 /* ItemTableViewController.swift */,
 			);
 			path = "ios-mini-app-braeburn";
 			sourceTree = "<group>";
@@ -259,7 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DAA49A31D99D098001B6173 /* ItemTableViewController.swift in Sources */,
+				9DAA49A11D99D06C001B6173 /* ItemTableViewCell.swift in Sources */,
 				9DAA49731D99CF2E001B6173 /* ViewController.swift in Sources */,
+				9DAA499F1D99D041001B6173 /* Item.swift in Sources */,
 				9DAA49711D99CF2E001B6173 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
