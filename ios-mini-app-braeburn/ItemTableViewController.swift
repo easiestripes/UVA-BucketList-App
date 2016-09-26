@@ -78,9 +78,9 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
     }
     
     func loadDefaultItems() {
-        let item1 = Item(name: "Task 1")
-        let item2 = Item(name: "Task 2")
-        let item3 = Item(name: "Task 3")
+        let item1 = Item(name: "Streak The Lawn")
+        let item2 = Item(name: "Go Steamtunneling")
+        let item3 = Item(name: "High-Five Dean Groves")
         
         items += [item1, item2, item3]
     }

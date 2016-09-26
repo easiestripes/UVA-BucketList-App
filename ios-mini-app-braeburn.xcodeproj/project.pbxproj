@@ -424,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "ios-mini-app-braeburn/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.virginia.cs.ios-mini-app-braeburn";
@@ -436,6 +437,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "ios-mini-app-braeburn/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.virginia.cs.ios-mini-app-braeburn";
@@ -517,6 +519,7 @@
 				9DAA49971D99CF2E001B6173 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9DAA49981D99CF2E001B6173 /* Build configuration list for PBXNativeTarget "ios-mini-app-braeburnTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +528,7 @@
 				9DAA499A1D99CF2E001B6173 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9DAA499B1D99CF2E001B6173 /* Build configuration list for PBXNativeTarget "ios-mini-app-braeburnUITests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +537,7 @@
 				9DAA499D1D99CF2E001B6173 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
