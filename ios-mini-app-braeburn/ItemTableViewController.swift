@@ -4,8 +4,11 @@
 //
 //  Created by Matthew Leon on 9/26/16.
 //  Copyright © 2016 CS4720. All rights reserved.
-//
-
+/**
+ * Sources: 
+ * https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson7.html#//apple_ref/doc/uid/TP40015214-CH8-SW1
+ * http://stackoverflow.com/questions/24215117/how-to-recognize-swipe-in-all-4-directions
+ */
 import UIKit
 
 class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegate {
