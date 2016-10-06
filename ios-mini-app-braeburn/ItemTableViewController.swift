@@ -23,16 +23,6 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
         
         loadDefaultItems()
         
-        /*let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
-         swipeDown.direction = .down
-         swipeDown.numberOfTouchesRequired = 1
-         self.view.addGestureRecognizer(swipeDown)
-         
-         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
-         swipeUp.direction = .up
-         swipeUp.numberOfTouchesRequired = 1
-         self.view.addGestureRecognizer(swipeUp)*/
-        
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         swipeRight.direction = .right
         swipeRight.numberOfTouchesRequired = 1
@@ -42,27 +32,8 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
         swipeLeft.direction = .left
         swipeLeft.numberOfTouchesRequired = 1
         self.view.addGestureRecognizer(swipeLeft)
-        /*
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
-        tap.numberOfTapsRequired = 1
-        self.view.addGestureRecognizer(tap)
- */
     }
-/*
-    func tapped(gesture: UIGestureRecognizer) {
-        if let tapGesture = gesture as? UITapGestureRecognizer {
-            let loc = tapGesture.location(in: self.tableView)
-            let indexPath = tableView.indexPathForRow(at: loc)
-            if(indexPath != nil) {
-                currentCell = tableView.cellForRow(at: indexPath!) as? ItemTableViewCell
-            }
-            if (currentCell) != nil {
-                print (currentCell?.nameLabel.text, "touched")
-            }
-        }
-    }
-    */
-    
+
     func swiped(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             
@@ -77,21 +48,20 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
                 switch swipeGesture.direction {
                     
                 case UISwipeGestureRecognizerDirection.right:
-                    //print("Swiped Right")
                     currentCell?.accessoryType = UITableViewCellAccessoryType.checkmark
-                    print(currentCell)
+                    let ind = tableView.indexPath(for: currentCell!)
+                    items[(ind?.row)!].isCompleted = true
+                   // tableView.reloadRows(at: [indexPath!], with: .none)
                     currentCell = nil
                     
                 case UISwipeGestureRecognizerDirection.left:
-                    //print("Swiped Left")
                     currentCell?.accessoryType = UITableViewCellAccessoryType.none
+                    let ind = tableView.indexPath(for: currentCell!)
+                    items[(ind?.row)!].isCompleted = false
+                   // tableView.reloadRows(at: [indexPath!], with: .none)
+                    //tableView.cellAt(indexPath) = currentCell
+                   // tableView.cellAt
                     currentCell = nil
-                    
-                    /*case UISwipeGestureRecognizerDirection.up:
-                     //print("Swiped Up")
-                     
-                     case UISwipeGestureRecognizerDirection.down:
-                     //print("Swiped Down")*/
                     
                 default:
                     break
@@ -108,44 +78,12 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
         items += [item1, item2, item3]
     }
     
-    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     
-     //let indexPath = tableView.indexPathForSelectedRow //optional, to get from any UIButton for example
-     print("test")
-     if(indexPath != nil) {
-     currentCell = tableView.cellForRow(at: indexPath) as! ItemTableViewCell
-     print(indexPath.row)
-     } else {
-     print("pickles")
-     }
-     }*/
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Table view data source
-    
-    /*func getIndexPathFromCell(sender: UIButton) -> NSIndexPath! {
-     if let view = sender.superview {
-     var superView = view
-     while (!superView.isKindOfClass(UITableViewCell.classForCoder())) {
-     if let viewSuperView = superView.superview {
-     superView = viewSuperView
-     } else {
-     return nil
-     }
-     }
-     if let cell = superView as? GoalsTableViewCell {
-     return myTableView.indexPathForCell(cell)
-     } else {
-     return nil
-     }
-     } else {
-     return nil
-     }
-     }*/
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -166,70 +104,42 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
         return cell
     }
     
-    
-    /*
-    @IBAction func unwindToItemList(sender: UIStoryboardSegue){
-        if let sourceViewController = sender.sourceViewController as? NewItemViewController, item = sourceViewController.item {
-            // Add a new item
-            let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
-            items.append(item)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-            
-        }
-    }
- */
     @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? NewItemViewController, let item = sourceViewController.item {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // update an existing item
                 items[selectedIndexPath.row] = item
+                print(item.isCompleted)
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                if item.isCompleted == true{
+                    print("1")
+                    let temp = tableView.cellForRow(at: selectedIndexPath) as? ItemTableViewCell
+                    temp?.accessoryType = UITableViewCellAccessoryType.checkmark
+                    //tableView.cellForRow(at: <#T##IndexPath#>)
+                    //currentCell = tableView.cellForRow(at: indexPath!) as? ItemTableViewCell
+                } else {
+                    print("2")
+                    let temp = tableView.cellForRow(at: selectedIndexPath) as? ItemTableViewCell
+                    temp?.accessoryType = UITableViewCellAccessoryType.checkmark
+                    //currentCell?.accessoryType = UITableViewCellAccessoryType.none
+                }
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else {
                 // Add a new item.
                 let newIndexPath = IndexPath(row: items.count, section: 0)
                 items.append(item)
-                tableView.insertRows(at: [newIndexPath], with: .bottom)
+                if item.isCompleted == true{
+                    currentCell?.accessoryType = UITableViewCellAccessoryType.checkmark
+                    tableView.insertRows(at: [newIndexPath], with: .bottom)
+                }
+                else{
+                    currentCell?.accessoryType = UITableViewCellAccessoryType.none
+                    tableView.insertRows(at: [newIndexPath], with: .bottom)
+                }
             }
         }
     }
-
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-     if editingStyle == .Delete {
-     // Delete the row from the data source
-     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-     } else if editingStyle == .Insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
     
      // MARK: - Navigation
      

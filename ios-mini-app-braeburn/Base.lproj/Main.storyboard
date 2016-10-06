@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="89"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fFx-4e-xYr" id="cJ3-aT-9ID">
-                                    <frame key="frameInset" width="320" height="88"/>
+                                    <frame key="frameInset" width="320" height="88.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dut-Xg-aph">
@@ -115,7 +115,7 @@
                                 <action selector="cancel:" destination="wxC-WH-1IF" id="fG6-Yb-CLb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="ejT-Pk-cNU">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="ejT-Pk-cNU">
                             <connections>
                                 <segue destination="qi1-E3-1yO" kind="unwind" unwindAction="unwindToItemListWithSender:" id="a7T-83-Ni7"/>
                             </connections>

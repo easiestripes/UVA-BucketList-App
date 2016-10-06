@@ -44,22 +44,19 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
             dismiss(animated: true, completion: nil)
         } else {
             navigationController!.popViewController(animated: true)
-        }
-        
+        }        
     }
 
-    
-    
-    
     // method to let you configure a view controller before it's presented
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if let sender = sender as? UIBarButtonItem, sender === addButton {
             let itemName = itemTextField.text ?? ""
             let itemDescription = itemDescriptionTextField.text ?? ""
+            print(isCompleted)
             let itemCompletedSwitch = isCompleted
                 
             // Set the item to be passed to ItemTableViewController after unwind segue
-            item = Item(name: itemName, desc: itemDescription, isCompleted: itemCompletedSwitch)
+            item = Item(name: itemName, desc: itemDescription, isCompleted: isCompleted)
         }
     }
     
@@ -76,6 +73,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
             itemTextField.text = item.name
             itemDescriptionTextField.text = item.desc
             itemCompletedSwitch.setOn(item.isCompleted, animated: false)
+            isCompleted = item.isCompleted
         }
         
         // Enable the add button only if the text field has a valid item name
