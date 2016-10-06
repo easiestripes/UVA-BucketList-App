@@ -8,6 +8,9 @@
 
 import UIKit
 
+// MARK: Properties
+
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {

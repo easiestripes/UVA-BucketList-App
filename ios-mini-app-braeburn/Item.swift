@@ -13,11 +13,15 @@ class Item: NSObject {
     // MARK: Propetries
     
     var name: String
+    var desc: String
+    var isCompleted: Bool
     
     // MARK: Initilization
     
-    init(name: String) {
+    init(name: String, desc: String, isCompleted: Bool) {
         // Initialize stored propetries
         self.name = name
+        self.desc = desc
+        self.isCompleted = isCompleted
     }
 }

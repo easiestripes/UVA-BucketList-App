@@ -42,7 +42,26 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
         swipeLeft.direction = .left
         swipeLeft.numberOfTouchesRequired = 1
         self.view.addGestureRecognizer(swipeLeft)
+        /*
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        tap.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tap)
+ */
     }
+/*
+    func tapped(gesture: UIGestureRecognizer) {
+        if let tapGesture = gesture as? UITapGestureRecognizer {
+            let loc = tapGesture.location(in: self.tableView)
+            let indexPath = tableView.indexPathForRow(at: loc)
+            if(indexPath != nil) {
+                currentCell = tableView.cellForRow(at: indexPath!) as? ItemTableViewCell
+            }
+            if (currentCell) != nil {
+                print (currentCell?.nameLabel.text, "touched")
+            }
+        }
+    }
+    */
     
     func swiped(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
@@ -60,6 +79,7 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
                 case UISwipeGestureRecognizerDirection.right:
                     //print("Swiped Right")
                     currentCell?.accessoryType = UITableViewCellAccessoryType.checkmark
+                    print(currentCell)
                     currentCell = nil
                     
                 case UISwipeGestureRecognizerDirection.left:
@@ -81,9 +101,9 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
     }
     
     func loadDefaultItems() {
-        let item1 = Item(name: "Streak The Lawn")
-        let item2 = Item(name: "Go Steamtunneling")
-        let item3 = Item(name: "High-Five Dean Groves")
+        let item1 = Item(name: "Streak The Lawn", desc: "Goodnight, Mr. Jefferson", isCompleted: false)
+        let item2 = Item(name: "Go Steamtunneling", desc: "it's hot", isCompleted: false)
+        let item3 = Item(name: "High-Five Dean Groves", desc: "cool!", isCompleted: false)
         
         items += [item1, item2, item3]
     }
@@ -146,6 +166,35 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
         return cell
     }
     
+    
+    /*
+    @IBAction func unwindToItemList(sender: UIStoryboardSegue){
+        if let sourceViewController = sender.sourceViewController as? NewItemViewController, item = sourceViewController.item {
+            // Add a new item
+            let newIndexPath = NSIndexPath(forRow: items.count, inSection: 0)
+            items.append(item)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            
+        }
+    }
+ */
+    @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? NewItemViewController, let item = sourceViewController.item {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // update an existing item
+                items[selectedIndexPath.row] = item
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+            else {
+                // Add a new item.
+                let newIndexPath = IndexPath(row: items.count, section: 0)
+                items.append(item)
+                tableView.insertRows(at: [newIndexPath], with: .bottom)
+            }
+        }
+    }
+
+    
     /*
      // Override to support conditional editing of the table view.
      override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -181,14 +230,23 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
      }
      */
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail" {
+            let itemDetailViewController = segue.destination as! NewItemViewController
+            // Get the cell that generated this segue
+            if let selectedItemCell = sender as? ItemTableViewCell {
+                let indexPath = tableView.indexPath(for: selectedItemCell)!
+                let selectedItem = items[indexPath.row]
+                itemDetailViewController.item = selectedItem
+            }
+        }
+        else if segue.identifier == "AddItem"{
+            
      }
-     */
     
+    }
 }

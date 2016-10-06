@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D22C7B61DA5D02D00E62ECD /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D22C7B51DA5D02D00E62ECD /* NewItemViewController.swift */; };
 		9DAA49711D99CF2E001B6173 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA49701D99CF2E001B6173 /* AppDelegate.swift */; };
 		9DAA49731D99CF2E001B6173 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAA49721D99CF2E001B6173 /* ViewController.swift */; };
 		9DAA49761D99CF2E001B6173 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DAA49741D99CF2E001B6173 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D22C7B51DA5D02D00E62ECD /* NewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemViewController.swift; sourceTree = "<group>"; };
 		9DAA496D1D99CF2E001B6173 /* ios-mini-app-braeburn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-mini-app-braeburn.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DAA49701D99CF2E001B6173 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DAA49721D99CF2E001B6173 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				9DAA49701D99CF2E001B6173 /* AppDelegate.swift */,
 				9DAA49721D99CF2E001B6173 /* ViewController.swift */,
 				9DAA49741D99CF2E001B6173 /* Main.storyboard */,
+				9D22C7B51DA5D02D00E62ECD /* NewItemViewController.swift */,
 				9DAA49771D99CF2E001B6173 /* Assets.xcassets */,
 				9DAA49791D99CF2E001B6173 /* LaunchScreen.storyboard */,
 				9DAA497C1D99CF2E001B6173 /* Info.plist */,
@@ -202,6 +205,7 @@
 				TargetAttributes = {
 					9DAA496C1D99CF2E001B6173 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = C3VT77699S;
 						ProvisioningStyle = Automatic;
 					};
 					9DAA49801D99CF2E001B6173 = {
@@ -270,6 +274,7 @@
 			files = (
 				9DAA49A31D99D098001B6173 /* ItemTableViewController.swift in Sources */,
 				9DAA49A11D99D06C001B6173 /* ItemTableViewCell.swift in Sources */,
+				9D22C7B61DA5D02D00E62ECD /* NewItemViewController.swift in Sources */,
 				9DAA49731D99CF2E001B6173 /* ViewController.swift in Sources */,
 				9DAA499F1D99D041001B6173 /* Item.swift in Sources */,
 				9DAA49711D99CF2E001B6173 /* AppDelegate.swift in Sources */,
@@ -424,7 +429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C3VT77699S;
 				INFOPLIST_FILE = "ios-mini-app-braeburn/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.virginia.cs.ios-mini-app-braeburn";
@@ -437,7 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C3VT77699S;
 				INFOPLIST_FILE = "ios-mini-app-braeburn/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.virginia.cs.ios-mini-app-braeburn";
