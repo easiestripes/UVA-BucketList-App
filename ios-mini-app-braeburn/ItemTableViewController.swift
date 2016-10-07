@@ -8,6 +8,7 @@
  * Sources: 
  * https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson7.html#//apple_ref/doc/uid/TP40015214-CH8-SW1
  * http://stackoverflow.com/questions/24215117/how-to-recognize-swipe-in-all-4-directions
+ * <a href="https://icons8.com/web-app/8139/Paint-Bucket-Filled">Paint bucket filled icon credits</a>
  */
 import UIKit
 
@@ -51,16 +52,12 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
                     currentCell?.accessoryType = UITableViewCellAccessoryType.checkmark
                     let ind = tableView.indexPath(for: currentCell!)
                     items[(ind?.row)!].isCompleted = true
-                   // tableView.reloadRows(at: [indexPath!], with: .none)
                     currentCell = nil
                     
                 case UISwipeGestureRecognizerDirection.left:
                     currentCell?.accessoryType = UITableViewCellAccessoryType.none
                     let ind = tableView.indexPath(for: currentCell!)
                     items[(ind?.row)!].isCompleted = false
-                   // tableView.reloadRows(at: [indexPath!], with: .none)
-                    //tableView.cellAt(indexPath) = currentCell
-                   // tableView.cellAt
                     currentCell = nil
                     
                 default:
@@ -72,8 +69,8 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
     
     func loadDefaultItems() {
         let item1 = Item(name: "Streak The Lawn", desc: "Goodnight, Mr. Jefferson", isCompleted: false)
-        let item2 = Item(name: "Go Steamtunneling", desc: "it's hot", isCompleted: false)
-        let item3 = Item(name: "High-Five Dean Groves", desc: "cool!", isCompleted: false)
+        let item2 = Item(name: "Go Steamtunneling", desc: "Be careful, it's hot down there!", isCompleted: false)
+        let item3 = Item(name: "High-Five Dean Groves", desc: "What a cool dean!", isCompleted: false)
         
         items += [item1, item2, item3]
     }
@@ -100,7 +97,6 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
         let item = items[indexPath.row]
         
         cell.nameLabel.text = item.name
-        
         return cell
     }
     
@@ -109,21 +105,14 @@ class ItemTableViewController: UITableViewController, UIGestureRecognizerDelegat
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // update an existing item
                 items[selectedIndexPath.row] = item
-                print(item.isCompleted)
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 if item.isCompleted == true{
-                    print("1")
                     let temp = tableView.cellForRow(at: selectedIndexPath) as? ItemTableViewCell
                     temp?.accessoryType = UITableViewCellAccessoryType.checkmark
-                    //tableView.cellForRow(at: <#T##IndexPath#>)
-                    //currentCell = tableView.cellForRow(at: indexPath!) as? ItemTableViewCell
                 } else {
-                    print("2")
                     let temp = tableView.cellForRow(at: selectedIndexPath) as? ItemTableViewCell
-                    temp?.accessoryType = UITableViewCellAccessoryType.checkmark
-                    //currentCell?.accessoryType = UITableViewCellAccessoryType.none
+                    temp?.accessoryType = UITableViewCellAccessoryType.none
                 }
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else {
                 // Add a new item.

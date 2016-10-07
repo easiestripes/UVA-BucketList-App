@@ -8,13 +8,15 @@
 
 import UIKit
 
-class NewItemViewController: UIViewController, UITextFieldDelegate {
+class NewItemViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     // MARK: Properties
     @IBOutlet weak var itemTextField: UITextField!
     @IBOutlet weak var addButton: UIBarButtonItem!
-    @IBOutlet weak var itemDescriptionTextField: UITextField!
     @IBOutlet weak var itemCompletedSwitch: UISwitch!
+    @IBOutlet weak var itemDescriptionTextView: UITextView!
+
+    
     
     var isCompleted = false;
 
@@ -51,9 +53,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if let sender = sender as? UIBarButtonItem, sender === addButton {
             let itemName = itemTextField.text ?? ""
-            let itemDescription = itemDescriptionTextField.text ?? ""
-            print(isCompleted)
-            let itemCompletedSwitch = isCompleted
+            let itemDescription = itemDescriptionTextView.text ?? ""
                 
             // Set the item to be passed to ItemTableViewController after unwind segue
             item = Item(name: itemName, desc: itemDescription, isCompleted: isCompleted)
@@ -65,13 +65,25 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Handle the text field's user input through delegate callbacks
         itemTextField.delegate = self
+        
+        itemDescriptionTextView!.layer.borderWidth = 1
+        itemDescriptionTextView!.layer.borderColor = UIColor.lightGray.cgColor
+        itemDescriptionTextView!.layer.cornerRadius = 5
+        itemTextField!.layer.borderWidth = 1
+        itemTextField!.layer.borderColor = UIColor.lightGray.cgColor
+        itemTextField!.layer.cornerRadius = 5
+        let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 200, width: 5, height: 20))
+        //Change your required space instaed of 5.
+        itemTextField.leftView = paddingView
+        itemTextField.leftViewMode = UITextFieldViewMode.always
         
         if let item = item {
             navigationItem.title = item.name
             itemTextField.text = item.name
-            itemDescriptionTextField.text = item.desc
+            itemDescriptionTextView.text = item.desc
             itemCompletedSwitch.setOn(item.isCompleted, animated: false)
             isCompleted = item.isCompleted
         }
